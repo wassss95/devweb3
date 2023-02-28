@@ -1,11 +1,10 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
 {% extends 'base.html' %}
 
 {% block title %}<title>Page assos</title>{% endblock %}
 
 {% block content %}
 <h1>Assos page</h1>
-
 <table class="table">
     <thead>
         <tr>
@@ -13,17 +12,22 @@
             <th>RNA ID</th>
             <th>RNA ID EX</th>
             <th>Gestion</th>
+
         </tr>
     </thead>
     <tbody>
         {% for data in datas %}
         <tr>
-            <td>{{ data.id }}</td>
-            <td>{{ data.rna_id }}</td>
-            <td>{{ data.rna_id_ex }}</td>
-            <td>{{ data.gestion }}</td>
+            <td>{{ data.id}}</td>
+            <td>{{ data.rna_id}}</td>
+            <td>{{ data.rna_id_ex_id}}</td>
+            <td>{{ data.gestion}}</td>
+            <td><a href="/edit/{{ data.id}}" class="btn btn-outline-primary">edit</a></td>
+            <td><a href="/delete/{{ data.id}}" class="btn btn-outline-danger">delete</a></td>
+            
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="/add" class="btn btn-outline-success">add</a>
 {% endblock %}

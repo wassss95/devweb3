@@ -1,31 +1,34 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% block title %}<title>Page assos</title>{% endblock %}
+{% block title %}
+<title>Ajouter une ligne</title>
+{% endblock %} 
 
 {% block content %}
 
-<form method="post" action="{{ url_for('add') }}">
-
-    <label for="rna_id">RNA ID :</label>
-
-    <input type="text" name="rna_id" id="rna_id">
-    
+<h1>Ajouter une ligne</h1>
+<form method="post">
     <br>
-
-    <label for="rna_id_ex_id">RNA ID Ex:</label>
-
-    <input type="text" name="rna_id_ex_id" id="rna_id_ex_id">
     <br>
-
-    <label for="gestion">Gestion:</label>
-
-    <input type="text" name="gestion" id="gestion">
-    
+    <div class="form-group">
+        <label for="rna_id">RNA ID:</label>
+        <input type="text" class="form-control" id="rna_id" name="rna_id">
+    </div>
     <br>
-
-    <input type="submit" value="Ajouter ces données">
-
+    <br>
+    <div class="form-group">
+        <label for="rna_id_ex_id">RNA ID EX_ID:</label>
+        <input type="text" class="form-control" id="rna_id_ex_id" name="rna_id_ex_id">
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="gestion">Gestion:</label>
+        <input type="text" class="form-control" id="gestion" name="gestion">
+    </div>
+    <br>
+    <br>
+    <br>
+    <button type="submit" class="mon-bouton">Valider l'ajout</button>
 </form>
-
 {% endblock %}

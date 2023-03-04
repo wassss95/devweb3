@@ -1,27 +1,35 @@
 {% extends 'base.html' %}
-
-{% block title %}<title>Modifier :</title>
-
-
+{% block title %}
+<title>Modifier :</title>
+{% endblock %}
 {% block content %}
 
 
 <h1>Modifier :</h1>
 
 <form method="POST">
+
+    <br>
+    <br>
     <div class="form-group">
         <label for="rna_id">RNA ID</label>
         <input type="text" class="form-control" id="rna_id" name="rna_id" value="{{ data.rna_id }}" required>
     </div>
+    <br>
+    <br>
     <div class="form-group">
         <label for="rna_id_ex">RNA ID EX</label>
         <input type="text" class="form-control" id="rna_id_ex_id" name="rna_id_ex_id" value="{{ data.rna_id_ex_id }}" required>
     </div>
+    <br>
+    <br>
     <div class="form-group">
         <label for="gestion">Gestion</label>
         <input type="text" class="form-control" id="gestion" name="gestion" value="{{ data.gestion }}" required>
     </div>
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <br>
+    <br>
+    <button type="submit" class="mon-bouton">Enregistrer</button>
 </form>
 
 

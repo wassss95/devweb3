@@ -25,18 +25,20 @@ def home():
 def about():
   return render_template('about.html')
 
-@app.route('/edit/<id>' ,methods=['GET','POST'])
+@app.route('/edit/<int:id>' ,methods=['GET','POST'])
 def edit(id):
   data = Data.query.get(id)
   if request.method == 'POST':
     data.rna_id = request.form['rna_id']
-    data.rna_id_ex = request.form['rna_id_ex_id']
+    data.rna_id_ex_id = request.form['rna_id_ex_id']
     data.gestion = request.form['gestion']
     db.session.commit()
     return redirect(url_for('assos'))
-  return render_template('edit.html')
+  
+  return render_template('edit.html', data=data)
 
-@app.route('/add')
+
+@app.route('/add' ,methods=['GET','POST'])
 def add():
   if request.method == 'POST':
     rna_id = request.form['rna_id']
@@ -54,6 +56,8 @@ def delete(id):
   db.session.delete(data)
   db.session.commit()
   return redirect(url_for('assos'))
+
+
 
 @app.route('/assos')
 def assos():

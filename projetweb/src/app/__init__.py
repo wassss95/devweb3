@@ -79,3 +79,9 @@ def hello(name=None):
 
 if __name__ == '__main__':
   app.run()
+
+
+@app.route('/visualisations')
+def visualisations():
+
+  return render_template('visualisations.html')  

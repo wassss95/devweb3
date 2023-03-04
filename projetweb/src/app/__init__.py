@@ -1,6 +1,4 @@
-from urllib import request
-from flask import Flask, render_template
-from flask import url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -30,37 +28,36 @@ def about():
 @app.route('/edit/<id>' ,methods=['GET','POST'])
 def edit(id):
   data = Data.query.get(id)
-
   if request.method == 'POST':
     data.rna_id = request.form['rna_id']
-    data.rna_id_ex_id = request.form['rna_id_ex_id']
+    data.rna_id_ex = request.form['rna_id_ex_id']
     data.gestion = request.form['gestion']
     db.session.commit()
     return redirect(url_for('assos'))
-  return render_template('edit.html', data=data)
+  return render_template('edit.html')
 
-@app.route('/add', methods=['GET','POST'])
+@app.route('/add')
 def add():
   if request.method == 'POST':
-        rna_id = request.form['rna_id']
-        rna_id_ex_id = request.form['rna_id_ex_id']
-        gestion = request.form['gestion']
-        new_data = Data(rna_id=rna_id, rna_id_ex_id=rna_id_ex_id, gestion=gestion)
-        db.session.add(new_data)
-        db.session.commit()
-        return redirect(url_for('assos'))
+    rna_id = request.form['rna_id']
+    rna_id_ex_id = request.form['rna_id_ex_id']
+    gestion = request.form['gestion']
+    new_data = Data(rna_id=rna_id, rna_id_ex_id=rna_id_ex_id, gestion=gestion)
+    db.session.add(new_data)
+    db.session.commit()
+    return redirect(url_for('assos'))
   return render_template('add.html')
 
-@app.route('/delete/<int:id>')
+@app.route('/delete/<id>',methods=['GET','POST'])
 def delete(id):
-  data=Data.query.get(id)
+  data = Data.query.get(id)
   db.session.delete(data)
   db.session.commit()
   return redirect(url_for('assos'))
 
 @app.route('/assos')
 def assos():
-  datas = Data.query.limit(10).all()
+  datas = Data.query.limit(20).all()
   for data in datas:
     print(f"{data.rna_id}")
   

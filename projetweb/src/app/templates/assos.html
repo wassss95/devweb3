@@ -22,13 +22,16 @@
             <td>{{ data.rna_id}}</td>
             <td>{{ data.rna_id_ex_id}}</td>
             <td>{{ data.gestion}}</td>
-            <td><a href="/edit/{{ data.id}}" class="btn btn-outline-primary">edit</a></td>
-            <td><a href="/delete/{{ data.id}}" class="btn btn-outline-danger">delete</a></td>
+            <td><a href="/edit/{{ data.id}}" class="mon-bouton" >edit</a></td>
+            <td><a href="/delete/{{ data.id}}" class="mon-bouton">delete</a></td>
             
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<a href="/add" class="btn btn-outline-success">add</a>
+<a href="/add" class="mon-bouton">add</a>
 {% endblock %}
+
+
+<button class="mon-bouton">Cliquez ici</button>

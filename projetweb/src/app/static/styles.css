@@ -32,3 +32,11 @@ nav a {
     display: block;
     padding: 10px;
 }
+
+.mon-bouton {
+    background-color: rgb(11, 87, 127);
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }

@@ -1,8 +1,31 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block title %}<title>Add Page</title>{% endblock %}
+{% block title %}<title>Page assos</title>{% endblock %}
 
 {% block content %}
-    <h1>Add</h1>
+
+<form method="post" action="{{ url_for('add') }}">
+
+    <label for="rna_id">RNA ID :</label>
+
+    <input type="text" name="rna_id" id="rna_id">
+    
+    <br>
+
+    <label for="rna_id_ex_id">RNA ID Ex:</label>
+
+    <input type="text" name="rna_id_ex_id" id="rna_id_ex_id">
+    <br>
+
+    <label for="gestion">Gestion:</label>
+
+    <input type="text" name="gestion" id="gestion">
+    
+    <br>
+
+    <input type="submit" value="Ajouter ces données">
+
+</form>
+
 {% endblock %}

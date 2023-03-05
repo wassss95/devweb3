@@ -17,6 +17,13 @@
 </head>
 <body>
     <canvas id="myChart"></canvas>
+
+    <select id="variableSelect">
+		<option value="variable1">011S</option>
+		<option value="variable2">012P</option>
+		<option value="variable3">013S</option>
+        <option value="variable4">014S</option>
+	</select>
     
     <script>
         // Récupérer les données depuis la base de données ou autre source
@@ -46,6 +53,22 @@
                 }
             }
         });
+        var variableSelect = document.getElementById('variableSelect');
+		variableSelect.addEventListener('change', function() {
+			// Mettre à jour les données du graphique en fonction de la variable sélectionnée
+			var selectedVariable = variableSelect.value;
+			if (selectedVariable === 'variable1') {
+				myChart.data.datasets[0].data = [1542];
+			} else if (selectedVariable === 'variable2') {
+				myChart.data.datasets[0].data = [3994];
+			} else if (selectedVariable === 'variable3') {
+				myChart.data.datasets[0].data = [1346];
+			}else if (selectedVariable === 'variable4') {
+				myChart.data.datasets[0].data = [1840];
+			}
+			// Mettre à jour le graphique
+			myChart.update();
+		});
     </script>
 </body>
 </html>

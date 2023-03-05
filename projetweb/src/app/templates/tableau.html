@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 
-{% block title %}<title>Page Visualisations</title>{% endblock %}
+{% block title %}<title>Page tableau de bord</title>{% endblock %}
 
 {% block content %}
-<h1>Visualisations</h1>
+<h1>Tableau de bord</h1>
 <table class="table">
     <thead>
         <tr>
@@ -18,6 +18,13 @@
         <tr>
             <td>La première visualition énumère les effectifs des associations en fonction de chaque gestion.</td>
             <td><a href="/gestion" class="mon-bouton" >Gestion</a></td>
+            
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <td>La seconde visualition montre la répartition des associations en fonction de la gestion, sous force de diagramme circulaire.</td>
+            <td><a href="/cercle" class="mon-bouton" >Gestion</a></td>
 
             
         </tr>

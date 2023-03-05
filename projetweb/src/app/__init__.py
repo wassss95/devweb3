@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
+import json
 import os
 
 app = Flask(__name__)
@@ -64,11 +65,6 @@ def assos():
   datas = Data.query.limit(20).all()
   for data in datas:
     print(f"{data.rna_id}")
-  
-  #stmt = select(Data)
-  #result = db.session.execute(stmt)
-  #for data in result.scalars():
-    #print(f"{data.rna_id}")
 
   return render_template('assos.html', datas=datas)  
 
@@ -77,14 +73,37 @@ def assos():
 def hello(name=None):
   return render_template('hello.html', name=name)
 
-if __name__ == '__main__':
-  app.run()
 
-@app.route('/visualisations')
-def visualisations():
-  return render_template('visualisations.html')
+@app.route('/tableau')
+def tableau():
+  return render_template('tableau.html')
 
 
 @app.route('/gestion')
 def gestion():
   return render_template('gestion.html')
+
+
+
+@app.route('/cercle')
+def cercle():
+    datas = Data.query.all()
+    gestion_count = {}
+    for d in datas:
+        if d.gestion in gestion_count:
+            gestion_count[d.gestion] += 1
+        else:
+            gestion_count[d.gestion] = 1
+
+    gestion_values = list(gestion_count.values())
+    gestion_labels = list(gestion_count.keys())
+    data = {
+        'values': gestion_values,
+        'labels': gestion_labels
+    }
+    return render_template('cercle.html', graph_data=json.dumps(data))
+
+
+
+if __name__ == '_main_':
+    app.run()
